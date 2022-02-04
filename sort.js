@@ -383,11 +383,34 @@ function lower(arr,target){
     return l
 }
 
-function lower_floor(){
-
+// 1 返回一个元素，小于等于target，并且索引靠前 
+function lower_floor(arr,target){
+  let r = lower(arr,target)
+  if(arr[r+1] === target){
+      return r+1
+  }
+  return r
 }
 
-function upper_floor(){
-
+// 2 返回一个元素，小于等于target，并且索引靠后
+function upper_floor(arr,target){
+     let l = -1
+     let r = arr.length - 1
+     while(l<r){
+         let mid = l+(r-l+1)/2 // 向上取整
+         if(arr[mid] <=target ){
+            l = mid
+         }else{
+            r= mid-1
+         }
+     }
+     return l
 }
+
+// leetcode中的问题：只要是单调的递增或单调递减的，就可以使用二分查找法
+
+
+
+// 二分搜索树
+// 1.二叉树 2.左子树比节点的值小，右子树比节点的值大，这样就是二分搜索树
 
